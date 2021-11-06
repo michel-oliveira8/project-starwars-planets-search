@@ -5,6 +5,13 @@ import SearchPlanetsContext from './SearchPlanetsContext';
 
 const SearchPlanetsProvider = ({ children }) => {
   const [planets, setPlanets] = useState([]);
+  const [filter, setFilter] = useState({
+    filters: {
+      filterByName: {
+        name: '',
+      },
+    },
+  });
 
   const fetchData = async () => {
     const { results } = await getPlanetSearch();
@@ -18,6 +25,8 @@ const SearchPlanetsProvider = ({ children }) => {
   const context = {
     planets,
     setPlanets,
+    filter,
+    setFilter,
   };
 
   return (
