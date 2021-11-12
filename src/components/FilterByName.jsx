@@ -16,15 +16,17 @@ export default function FilterByName() {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        name="name"
-        id="name"
-        data-testid="name-filter"
-        placeholder="Digite o nome"
-        onChange={ handleChange }
-      />
-    </div>
+    <form>
+      <label htmlFor="name">
+        <input
+          type="text"
+          name="name"
+          id="name"
+          data-testid="name-filter"
+          placeholder="Digite o nome"
+          onChange={ handleChange }
+        />
+      </label>
+    </form>
   );
 }

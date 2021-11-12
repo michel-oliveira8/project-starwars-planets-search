@@ -5,11 +5,15 @@ import SearchPlanetsContext from './SearchPlanetsContext';
 
 const SearchPlanetsProvider = ({ children }) => {
   const [planets, setPlanets] = useState([]);
+  const [column, setColumn] = useState('population');
+  const [comparison, setComparison] = useState('maior que');
+  const [value, setValue] = useState('');
   const [filter, setFilter] = useState({
     filters: {
       filterByName: {
         name: '',
       },
+      filterByNumericValues: [],
     },
   });
 
@@ -27,6 +31,12 @@ const SearchPlanetsProvider = ({ children }) => {
     setPlanets,
     filter,
     setFilter,
+    column,
+    setColumn,
+    comparison,
+    setComparison,
+    value,
+    setValue,
   };
 
   return (

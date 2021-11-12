@@ -6,7 +6,7 @@ export default function Table() {
   const {
     planets,
     filter: { filters: { filterByName: { name } } } } = useContext(SearchPlanetsContext);
-  console.log(name);
+
   return (
     <table>
       <thead>
@@ -16,7 +16,7 @@ export default function Table() {
       </thead>
       <tbody>
         {planets
-          .filter((value) => value.name.toLowerCase().includes(name.toLowerCase()))
+          .filter((item) => item.name.toLowerCase().includes(name.toLowerCase()))
           .map((planet, index) => (
             <tr key={ index }>
               <td>{planet.name}</td>
