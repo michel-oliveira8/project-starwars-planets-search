@@ -5,7 +5,7 @@ import SearchPlanetsContext from './SearchPlanetsContext';
 
 const SearchPlanetsProvider = ({ children }) => {
   const [planets, setPlanets] = useState([]);
-  const [column, setColumn] = useState('population');
+  const [column, setColumn] = useState('');
   const [comparison, setComparison] = useState('maior que');
   const [value, setValue] = useState('');
   const [filter, setFilter] = useState({

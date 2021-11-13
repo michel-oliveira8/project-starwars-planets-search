@@ -1,7 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import SearchPlanetsContext from '../context/SearchPlanetsContext';
 
 export default function FilterByNumericValues() {
+  const options = [
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ];
+  const [select, setSelect] = useState({
+    population: '',
+    orbital_period: '',
+    diameter: '',
+    rotation_period: '',
+    surface_water: '',
+  });
+
   const {
     planets,
     setPlanets,
@@ -14,6 +29,9 @@ export default function FilterByNumericValues() {
     value,
     setValue,
   } = useContext(SearchPlanetsContext);
+  console.log('select', select);
+
+  console.log('esta aqui', filter.filters.filterByNumericValues);
 
   const handleFilter = () => {
     let filteredPlanets;
@@ -30,7 +48,44 @@ export default function FilterByNumericValues() {
         .filter((dado) => Number(dado[column]) === Number(value));
     }
     setPlanets(filteredPlanets);
+    const seila = options.splice(options.indexOf(column), 1);
+    console.log(seila);
+    console.log('dentro do if', options);
+
+    if (column === 'population') {
+      setSelect({
+        ...select,
+        population: 'clickPopulation',
+      });
+    }
+
+    if (column === 'orbital_period') {
+      setSelect({
+        ...select,
+        orbital_period: 'clickOrbital',
+      });
+    }
+    if (column === 'diameter') {
+      setSelect({
+        ...select,
+        diameter: 'clickDiameter',
+      });
+    }
+    if (column === 'rotation_period') {
+      setSelect({
+        ...select,
+        rotation_period: 'clickRotation',
+      });
+    }
+    if (column === 'surface_water') {
+      setSelect({
+        ...select,
+        surface_water: 'clickSurface',
+      });
+    }
   };
+
+  console.log('fora do if', options);
 
   const handleClick = () => {
     setFilter({
@@ -56,11 +111,16 @@ export default function FilterByNumericValues() {
           value={ column }
           onChange={ (item) => setColumn(item.target.value) }
         >
-          <option value="population">population</option>
-          <option value="orbital_period">orbital_period</option>
-          <option value="diameter">diameter</option>
-          <option value="rotation_period">rotation_period</option>
-          <option value="surface_water">surface_water</option>
+          {select.population !== 'clickPopulation'
+           && <option value="population">population</option>}
+          {select.orbital_period !== 'clickOrbital'
+           && <option value="orbital_period">orbital_period</option>}
+          {select.diameter !== 'clickDiameter'
+           && <option value="diameter">diameter</option>}
+          {select.rotation_period !== 'clickRotation'
+           && <option value="rotation_period">rotation_period</option>}
+          {select.surface_water !== 'clickSurface'
+           && <option value="surface_water">surface_water</option>}
         </select>
       </label>
       <label htmlFor="comparison">

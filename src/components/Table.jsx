@@ -6,7 +6,6 @@ export default function Table() {
   const {
     planets,
     filter: { filters: { filterByName: { name } } } } = useContext(SearchPlanetsContext);
-
   return (
     <table>
       <thead>
