@@ -2,13 +2,6 @@ import React, { useContext, useState } from 'react';
 import SearchPlanetsContext from '../context/SearchPlanetsContext';
 
 export default function FilterByNumericValues() {
-  const options = [
-    'population',
-    'orbital_period',
-    'diameter',
-    'rotation_period',
-    'surface_water',
-  ];
   const [select, setSelect] = useState({
     population: '',
     orbital_period: '',
@@ -29,9 +22,6 @@ export default function FilterByNumericValues() {
     value,
     setValue,
   } = useContext(SearchPlanetsContext);
-  console.log('select', select);
-
-  console.log('esta aqui', filter.filters.filterByNumericValues);
 
   const handleFilter = () => {
     let filteredPlanets;
@@ -48,9 +38,6 @@ export default function FilterByNumericValues() {
         .filter((dado) => Number(dado[column]) === Number(value));
     }
     setPlanets(filteredPlanets);
-    const seila = options.splice(options.indexOf(column), 1);
-    console.log(seila);
-    console.log('dentro do if', options);
 
     if (column === 'population') {
       setSelect({
@@ -84,8 +71,6 @@ export default function FilterByNumericValues() {
       });
     }
   };
-
-  console.log('fora do if', options);
 
   const handleClick = () => {
     setFilter({
