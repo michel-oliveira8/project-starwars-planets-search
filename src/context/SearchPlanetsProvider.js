@@ -5,91 +5,57 @@ import SearchPlanetsContext from './SearchPlanetsContext';
 
 const SearchPlanetsProvider = ({ children }) => {
   const [planets, setPlanets] = useState([]);
-  const [select, setSelect] = useState({
-    population: '',
-    orbital_period: '',
-    diameter: '',
-    rotation_period: '',
-    surface_water: '',
-  });
+  const [column, setColumn] = useState('');
+  const [comparison, setComparison] = useState('maior que');
+  const [value, setValue] = useState('');
   const [filter, setFilter] = useState({
     filters: {
       filterByName: {
         name: '',
       },
       filterByNumericValues: [],
+      order: {
+        column: 'name',
+        sort: 'ASC',
+      },
     },
   });
-
-  const { filters: { filterByNumericValues } } = filter;
-  console.log(filterByNumericValues);
+  const [orderSort, setOrderSort] = useState('name');
+  const [orderASC, setOrderASC] = useState('ASC');
 
   const fetchData = async () => {
     const { results } = await getPlanetSearch();
-    setPlanets(results);
+    const menosUm = -1;
+    setPlanets(results.sort((a, b) => {
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return menosUm;
+      }
+      return 0;
+    }));
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const handleFilter = () => {
-    console.log(filterByNumericValues);
-    let filteredPlanets = planets;
-    if (filterByNumericValues[filterByNumericValues.length - 1].comparison === 'menor que') {
-      filteredPlanets = planets
-        .filter((dado) => Number(dado[filterByNumericValues[filterByNumericValues.length - 1].column]) < Number((filterByNumericValues[filterByNumericValues.length - 1].value)));
-    }
-    if (filterByNumericValues[filterByNumericValues.length - 1].comparison === 'maior que') {
-      filteredPlanets = planets
-        .filter((dado) => Number(dado[filterByNumericValues[filterByNumericValues.length - 1].column]) > Number(filterByNumericValues[filterByNumericValues.length - 1].value));
-    }
-    if (filterByNumericValues[filterByNumericValues.length - 1].comparison === 'igual a') {
-      filteredPlanets = planets
-        .filter((dado) => Number(dado[filterByNumericValues[filterByNumericValues.length - 1].column]) === Number(filterByNumericValues[filterByNumericValues.length - 1].value));
-    }
-    setPlanets(filteredPlanets);
-
-    if (filterByNumericValues[filterByNumericValues.length - 1].column === 'population') {
-      setSelect({
-        ...select,
-        population: 'clickPopulation',
-      });
-    }
-
-    if (filterByNumericValues[filterByNumericValues.length - 1].column === 'orbital_period') {
-      setSelect({
-        ...select,
-        orbital_period: 'clickOrbital',
-      });
-    }
-    if (filterByNumericValues[filterByNumericValues.length - 1].column === 'diameter') {
-      setSelect({
-        ...select,
-        diameter: 'clickDiameter',
-      });
-    }
-    if (filterByNumericValues[filterByNumericValues.length - 1].column === 'rotation_period') {
-      setSelect({
-        ...select,
-        rotation_period: 'clickRotation',
-      });
-    }
-    if (filterByNumericValues[filterByNumericValues.length - 1].column === 'surface_water') {
-      setSelect({
-        ...select,
-        surface_water: 'clickSurface',
-      });
-    }
-  };
-
   const context = {
     planets,
     setPlanets,
     filter,
     setFilter,
-    select,
-    handleFilter,
+    column,
+    setColumn,
+    comparison,
+    setComparison,
+    value,
+    setValue,
+    orderSort,
+    setOrderSort,
+    orderASC,
+    setOrderASC,
   };
 
   return (

@@ -18,7 +18,7 @@ export default function Table() {
           .filter((item) => item.name.toLowerCase().includes(name.toLowerCase()))
           .map((planet, index) => (
             <tr key={ index }>
-              <td>{planet.name}</td>
+              <td data-testid="planet-name">{planet.name}</td>
               <td>{planet.rotation_period}</td>
               <td>{planet.orbital_period}</td>
               <td>{planet.diameter}</td>
