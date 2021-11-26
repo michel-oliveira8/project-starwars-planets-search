@@ -3,9 +3,7 @@ import SearchPlanetsContext from '../context/SearchPlanetsContext';
 import titles from '../data';
 
 export default function Table() {
-  const {
-    planets,
-    filter: { filters: { filterByName: { name } } } } = useContext(SearchPlanetsContext);
+  const { data } = useContext(SearchPlanetsContext);
   return (
     <table>
       <thead>
@@ -14,8 +12,7 @@ export default function Table() {
         </tr>
       </thead>
       <tbody>
-        {planets
-          .filter((item) => item.name.toLowerCase().includes(name.toLowerCase()))
+        {data
           .map((planet, index) => (
             <tr key={ index }>
               <td data-testid="planet-name">{planet.name}</td>

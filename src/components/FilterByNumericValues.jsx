@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import SearchPlanetsContext from '../context/SearchPlanetsContext';
+import AddRemoveFilter from './AddRemoveFilter';
 
 export default function FilterByNumericValues() {
   const [select, setSelect] = useState({
@@ -11,8 +12,6 @@ export default function FilterByNumericValues() {
   });
 
   const {
-    planets,
-    setPlanets,
     filter,
     setFilter,
     column,
@@ -21,23 +20,25 @@ export default function FilterByNumericValues() {
     setComparison,
     value,
     setValue,
+    data,
+    setData,
   } = useContext(SearchPlanetsContext);
 
   const handleFilter = () => {
     let filteredPlanets;
     if (comparison === 'menor que') {
-      filteredPlanets = planets
+      filteredPlanets = data
         .filter((dado) => Number(dado[column]) < Number((value)));
     }
     if (comparison === 'maior que') {
-      filteredPlanets = planets
+      filteredPlanets = data
         .filter((dado) => Number(dado[column]) > Number(value));
     }
     if (comparison === 'igual a') {
-      filteredPlanets = planets
+      filteredPlanets = data
         .filter((dado) => Number(dado[column]) === Number(value));
     }
-    setPlanets(filteredPlanets);
+    setData(filteredPlanets);
 
     if (column === 'population') {
       setSelect({
@@ -75,13 +76,17 @@ export default function FilterByNumericValues() {
   const handleClick = () => {
     setFilter({
       ...filter,
-      filterByNumericValues: [
-        {
-          column,
-          comparison,
-          value,
-        },
-      ],
+      filters: {
+        ...filter.filters,
+        filterByNumericValues: [
+          ...filter.filters.filterByNumericValues,
+          {
+            column,
+            comparison,
+            value,
+          },
+        ],
+      },
     });
     handleFilter();
   };
@@ -139,6 +144,7 @@ export default function FilterByNumericValues() {
       >
         Filtrar
       </button>
+      <AddRemoveFilter />
     </form>
   );
 }

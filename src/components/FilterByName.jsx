@@ -2,17 +2,21 @@ import React, { useContext } from 'react';
 import SearchPlanetsContext from '../context/SearchPlanetsContext';
 
 export default function FilterByName() {
-  const { filter, setFilter } = useContext(SearchPlanetsContext);
+  const { filter, setFilter, planets, setData } = useContext(SearchPlanetsContext);
 
-  const handleChange = ({ target: { value } }) => {
+  const handleChange = ({ target }) => {
     setFilter({
       ...filter,
       filters: {
-        filterByName: {
-          name: value,
+        ...filter.filters,
+        FilterByName: {
+          name: target.value,
         },
       },
     });
+    const filterPlanetsByName = planets.filter((item) => (
+      item.name.toLowerCase().includes(target.value)));
+    setData(filterPlanetsByName);
   };
 
   return (

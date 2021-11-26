@@ -5,6 +5,7 @@ import SearchPlanetsContext from './SearchPlanetsContext';
 
 const SearchPlanetsProvider = ({ children }) => {
   const [planets, setPlanets] = useState([]);
+  const [data, setData] = useState([]);
   const [column, setColumn] = useState('');
   const [comparison, setComparison] = useState('maior que');
   const [value, setValue] = useState('');
@@ -35,11 +36,25 @@ const SearchPlanetsProvider = ({ children }) => {
       }
       return 0;
     }));
+    setData(results);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  const removeFilter = (target) => {
+    const removeCollumn = filter.filters.filterByNumericValues
+      .filter((item) => item.column !== target);
+    setFilter({
+      ...filter,
+      filters: {
+        ...filter.filters,
+        filterByNumericValues: removeCollumn,
+      },
+    });
+    setData(planets);
+  };
 
   const context = {
     planets,
@@ -56,6 +71,9 @@ const SearchPlanetsProvider = ({ children }) => {
     setOrderSort,
     orderASC,
     setOrderASC,
+    removeFilter,
+    data,
+    setData,
   };
 
   return (
