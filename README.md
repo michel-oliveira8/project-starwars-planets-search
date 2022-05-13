@@ -23,4 +23,4 @@ Você vai desenvolver uma lista com filtros de planetas do universo de Star Wars
   * Inicialize o projeto:
     * `npm start` (uma nova página deve abrir no seu navegador)
   * Verifique que os testes estão executando:
-    * `npm test`
+    * `npm test` (testes implementados pela Trybe)
