@@ -1,3 +1,6 @@
+# Projeto realizado durante curso na Trybe - Módulo de Front-end
+# Data da entrega do projeto 11/11/2021
+
 # Habilidades
 
 Nesse projeto, você será capaz de:
@@ -14,30 +17,10 @@ Você vai desenvolver uma lista com filtros de planetas do universo de Star Wars
 
 ---
 
-## Lista de requisitos
-
-### 1 - Faça uma requisição para o endpoint `/planets` da API de Star Wars e preencha uma tabela com os dados retornados, com exceção dos da coluna `residents`
-
-![image](req-1.png)
-
-### 2 - Filtre a tabela através de um texto, inserido num *campo de texto*, exibindo somente os planetas cujos nomes incluam o texto digitado
-
-![img](req-2.gif)
-
-### 3 - Crie um filtro para valores numéricos
-
-![img](req-3.gif)
-
-### 4 - Não utilize filtros repetidos
-
-![img](req-4.gif)
-
-### 5 - Apague o filtro de valores numéricos e desfaça as filtragens dos dados da tabela ao clicar no ícone de `X` de um dos filtros
-
-![img](req-5.gif)
-
-### Bônus
-
-### 6 - Ordene as colunas de forma ascendente ou descendente
-
-![img](req-6.gif)
+## Instale as dependências e inicialize o projeto
+  * Instale as dependências:
+    * `npm install`
+  * Inicialize o projeto:
+    * `npm start` (uma nova página deve abrir no seu navegador)
+  * Verifique que os testes estão executando:
+    * `npm test` (testes implementados pela Trybe)
