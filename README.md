@@ -1,6 +1,5 @@
 # Projeto realizado durante curso na Trybe - Módulo de Front-end
 
-
 ## Desenvolvimento
 
 Desenvolvido uma lista com filtros de planetas do universo de Star Wars usando **Context API e Hooks** para controlar os estados globais.
@@ -12,7 +11,7 @@ A API que foi utilizada está disponível em https://swapi-trybe.herokuapp.com/a
 ## Clone o repositório:
  - `git clone git@github.com:michel-oliveira8/project-starwars-planets-search.git`
  
- #### Entre na pasta do repositório que você acabou de clonar:
+#### Entre na pasta do repositório que você acabou de clonar:
  - `cd project-starwars-planets-search`
  
 ## Instale as dependências:
@@ -20,3 +19,10 @@ A API que foi utilizada está disponível em https://swapi-trybe.herokuapp.com/a
 
 ## Executar o projeto:
  - `npm start`
+
+## Instale as dependências e inicialize o projeto
+  * Instale as dependências:
+    * `npm install`
+  * Inicialize o projeto:
+    * `npm start`
+
