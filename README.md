@@ -6,7 +6,9 @@ Desenvolvido uma lista com filtros de planetas do universo de Star Wars usando *
 <br>
 A API que foi utilizada está disponível em https://swapi-trybe.herokuapp.com/api/planets/
 
----
+### Tecnologias:
+
+  - `HTML, CSS, JavaScript, React, Context API, Hooks`
 
 ## Clone o repositório:
  - `git clone git@github.com:michel-oliveira8/project-starwars-planets-search.git`
