@@ -19,10 +19,3 @@ A API que foi utilizada está disponível em https://swapi-trybe.herokuapp.com/a
 
 ## Executar o projeto:
  - `npm start`
-
-## Instale as dependências e inicialize o projeto
-  * Instale as dependências:
-    * `npm install`
-  * Inicialize o projeto:
-    * `npm start`
-
